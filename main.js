@@ -1,3 +1,19 @@
+// house stock transactions over $50K
+
+fetch("https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json")
+.then(res => res.json())
+.then(data =>{  
+    let twentytwoTransactors = data.filter((x,i) => x.cap_gains_over_200_usd == true && 
+    (x.disclosure_year=== 2022 || x.disclosure_year == 2021) && 
+    (x.amount !== "$1,001 - $15,000" && x.amount !== "$15,001 - $50,000"))
+    console.log(twentytwoTransactors)
+})
+.catch(err =>{
+    console.log(`error ${err}`)
+}) 
+
+
+// search by representative
 
 document.querySelector('button').addEventListener('click',search)
 
