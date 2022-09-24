@@ -29,9 +29,7 @@ fetch("https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_tran
 }) 
 
 
-// search by district
-
-
+// district drop down menu
 
 fetch("https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json")
 .then(res => res.json())
@@ -51,3 +49,41 @@ fetch("https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_tran
 .catch(err =>{
     console.log(`error ${err}`)
 }) 
+
+//change selection 
+
+function getSelectedValue(){
+    let districtSelect = document.querySelector('.districtList').value
+    fetch("https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json")
+.then(res => res.json())
+.then(data =>{  
+    let reps = data.filter((x,i) => data[i].district == districtSelect)
+    console.log(reps)
+    let repTrans = document.querySelector('.districtRepTransactionsList')
+    reps.forEach((x) =>{
+        let year = x.disclosure_year
+        let capGains = x.cap_gains_over_200_usd
+        let rep = x.representative
+        let asset = x.asset_description
+        let district = x.district
+        let amount = x.amount
+        let type = x.type
+        let date = x.transaction_date
+        repTrans.insertAdjacentHTML('beforeend',`<li>-------------------------------</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>Representative: ${rep}</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>District: ${district}</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>Asset: ${asset}</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>Amount: ${amount}</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>Year: ${year}</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>Cap Gains Over $200?: ${capGains}</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>Transaction Type: ${type}</li>`)
+        repTrans.insertAdjacentHTML('beforeend',`<li>Transaction Date: ${date}</li>`)
+    })
+    
+    })
+.catch(err =>{
+    console.log(`error ${err}`)
+    }) 
+}
+
+
