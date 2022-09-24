@@ -51,7 +51,6 @@ fetch("https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_tran
 }) 
 
 //change selection 
-
 function getSelectedValue(){
     let districtSelect = document.querySelector('.districtList').value
     fetch("https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json")
@@ -60,6 +59,13 @@ function getSelectedValue(){
     let reps = data.filter((x,i) => data[i].district == districtSelect)
     console.log(reps)
     let repTrans = document.querySelector('.districtRepTransactionsList')
+
+    //remove previous li - see MDN for .removeChild for source code
+    let element = document.querySelector('.districtRepTransactionsList');
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+}
+    //input li from using data from array
     reps.forEach((x) =>{
         let year = x.disclosure_year
         let capGains = x.cap_gains_over_200_usd
