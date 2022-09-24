@@ -14,16 +14,19 @@
 </head>
 <body>
     <header>
-    <h1>2021/2022 House Representative Stock Transactions over $50,000 with Capital Gains Greater than $200</h1>
-    <ul class="list"></ul>
+        <h1>House of Representatives Stock Transactions Dashboard</h1>
     </header>
-
-    <section>
-        <h2>All Transactions By District</h2>
-        <select class="districtList" onchange="getSelectedValue();"></select>
-        <ul class="districtRepTransactionsList"></ul>
-    </section>
-
+    <main>
+        <section>
+            <h2 class="over50k">2021/2022 House Representative Stock Transactions over $50,000 with Capital Gains Greater than $200</h2>
+            <ul class="list"></ul>
+        </section>
+        <section>
+            <h2>Transactions By District</h2>
+            <select class="districtList" onchange="getSelectedValue();"></select>
+            <ul class="districtRepTransactionsList"></ul>
+        </section>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>

@@ -1,20 +1,59 @@
-h1{
+.over50k{
     font-family: 'Cinzel', serif;
     text-align: center;
 }
 
 header{
-    background-image: linear-gradient(rgb(79, 79, 255),red);
+    background-image: linear-gradient(rgb(55, 55, 253), rgb(195, 195, 252));
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    height: 200px;
+    border-radius: 10px;
+    font-size: large;
+}
+
+h1{
+    padding-top: 5%;
 }
 
 body{
     height: 5000px;
 }
 
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    margin-right: 33px;
+}
+
+main section{
+    background-image: linear-gradient(red,white);
+    margin: 1%;
+    border-radius: 10px;
+    text-align: center;
+}
+
 section h2{
     font-size: 30px;
     font-family: 'Cinzel', serif;
 }
-body section{
-    background-image: linear-gradient(red,white);
+
+
+@media all and (max-width:500px) {
+    h1{
+        font-size: x-large;
+    }
+    body h2{
+        font-size: large;
+    }
 }
+
